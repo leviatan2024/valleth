@@ -1,0 +1,637 @@
+<!DOCTYPE html><html lang="pt-br"><!--<![endif]--><head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.v="1.2.3",this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",t=>{this.persisted=t.persisted}),window.addEventListener("DOMContentLoaded",()=>{this._preconnect3rdParties()}),this.delayedScripts={normal:[],async:[],defer:[]},this.trash=[],this.allJQueries=[]}_addUserInteractionListener(t){if(document.hidden){t._triggerListener();return}this.triggerEvents.forEach(e=>window.addEventListener(e,t.userEventHandler,{passive:!0})),window.addEventListener("touchstart",t.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",t.touchStartHandler),document.addEventListener("visibilitychange",t.userEventHandler)}_removeUserInteractionListener(){this.triggerEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!0})),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(t){"HTML"!==t.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),t.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"onclick","rocket-onclick"),this._pendingClickStarted())}_onTouchMove(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this._pendingClickFinished()}_onTouchEnd(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(t){t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this.interceptedClicks.push(t),t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),this._pendingClickFinished()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach(t=>{t.target.dispatchEvent(new MouseEvent("click",{view:t.view,bubbles:!0,cancelable:!0}))})}_waitForPendingClicks(){return new Promise(t=>{this._isClickPending?this._pendingClickFinished=t:t()})}_pendingClickStarted(){this._isClickPending=!0}_pendingClickFinished(){this._isClickPending=!1}_renameDOMAttribute(t,e,r){t.hasAttribute&&t.hasAttribute(e)&&(event.target.setAttribute(r,event.target.getAttribute(e)),event.target.removeAttribute(e))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let t=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(e=>{if(e.hasAttribute("src")){let r=new URL(e.src).origin;r!==location.origin&&t.push({src:r,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this._batchInjectResourceHints(t,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(this),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(t){console.error(t)}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._waitForPendingClicks().then(()=>{this._replayClicks()}),this._emptyTrash()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _transformScript(t){return new Promise((await this._littleBreath(),navigator.userAgent.indexOf("Firefox/")>0||""===navigator.vendor)?e=>{let r=document.createElement("script");[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),r.setAttribute(e,t.nodeValue))}),t.text&&(r.text=t.text),r.hasAttribute("src")?(r.addEventListener("load",e),r.addEventListener("error",e)):(r.text=t.text,e());try{t.parentNode.replaceChild(r,t)}catch(i){e()}}:async e=>{function r(){t.setAttribute("data-rocket-status","failed"),e()}try{let i=t.getAttribute("data-rocket-type"),n=t.getAttribute("data-rocket-src");t.text,i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",function r(){t.setAttribute("data-rocket-status","executed"),e()}),t.addEventListener("error",r),n?(t.removeAttribute("data-rocket-src"),t.src=n):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}catch(s){r()}})}async _loadScriptsFromList(t){let e=t.shift();return e&&e.isConnected?(await this._transformScript(e),this._loadScriptsFromList(t)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(t,e){var r=document.createDocumentFragment();t.forEach(t=>{let i=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(i){let n=document.createElement("link");n.href=i,n.rel=e,"preconnect"!==e&&(n.as="script"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),r.appendChild(n),this.trash.push(n)}}),document.head.appendChild(r)}_delayEventListeners(t){let e={};function r(t,r){!function t(r){!e[r]&&(e[r]={originalFunctions:{add:r.addEventListener,remove:r.removeEventListener},eventsToRewrite:[]},r.addEventListener=function(){arguments[0]=i(arguments[0]),e[r].originalFunctions.add.apply(r,arguments)},r.removeEventListener=function(){arguments[0]=i(arguments[0]),e[r].originalFunctions.remove.apply(r,arguments)});function i(t){return e[r].eventsToRewrite.indexOf(t)>=0?"rocket-"+t:t}}(t),e[t].eventsToRewrite.push(r)}function i(t,e){let r=t[e];Object.defineProperty(t,e,{get:()=>r||function(){},set(i){t["rocket"+e]=r=i}})}r(document,"DOMContentLoaded"),r(window,"DOMContentLoaded"),r(window,"load"),r(window,"pageshow"),r(document,"readystatechange"),i(document,"onreadystatechange"),i(window,"onload"),i(window,"onpageshow")}_delayJQueryReady(t){let e;function r(r){if(r&&r.fn&&!t.allJQueries.includes(r)){r.fn.ready=r.fn.init.prototype.ready=function(e){return t.domReadyFired?e.bind(document)(r):document.addEventListener("rocket-DOMContentLoaded",()=>e.bind(document)(r)),r([])};let i=r.fn.on;r.fn.on=r.fn.init.prototype.on=function(){if(this[0]===window){function t(t){return t.split(" ").map(t=>"load"===t||0===t.indexOf("load.")?"rocket-jquery-load":t).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=t(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(e=>{let r=arguments[0][e];delete arguments[0][e],arguments[0][t(e)]=r})}return i.apply(this,arguments),this},t.allJQueries.push(r)}e=r}r(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){r(t)}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this._littleBreath();let t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){let t=new Map;document.write=document.writeln=function(e){let r=document.currentScript;r||console.error("WPRocket unable to document.write this: "+e);let i=document.createRange(),n=r.parentElement,s=t.get(r);void 0===s&&(s=r.nextSibling,t.set(r,s));let a=document.createDocumentFragment();i.setStart(a,0),a.appendChild(i.createContextualFragment(e)),n.insertBefore(a,s)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}_emptyTrash(){this.trash.forEach(t=>t.remove())}static run(){let t=new RocketLazyLoadScripts;t._addUserInteractionListener(t)}}RocketLazyLoadScripts.run();</script>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="preconnect" href="https://connect.facebook.net">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <!-- Google Tag Manager -->
+    <script type="rocketlazyloadscript">
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WX3F2M4');
+    </script>
+
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script type="rocketlazyloadscript" async="" data-rocket-src="https://www.googletagmanager.com/gtag/js?id=G-0NQ2DPN8JC"></script>
+    <script type="rocketlazyloadscript">
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-0NQ2DPN8JC');
+    </script>
+
+	<!-- This site is optimized with the Yoast SEO plugin v20.8 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>VPN Brasil - Navegue sem ser visto, com a VPN Brasil GRÁTIS</title><link rel="preload" as="font" href="https://www.urban-vpn.com/wp-content/themes/urbanvpn/font/DMSans-Medium.woff2" crossorigin=""><link rel="preload" as="font" href="https://www.urban-vpn.com/wp-content/themes/urbanvpn/font/DMSans-Bold.woff2" crossorigin=""><link rel="preload" as="font" href="https://www.urban-vpn.com/wp-content/themes/urbanvpn/font/Aileron-Regular.woff2" crossorigin=""><style id="wpr-usedcss">body{--wp--preset--color--black:#000000;--wp--preset--color--cyan-bluish-gray:#abb8c3;--wp--preset--color--white:#ffffff;--wp--preset--color--pale-pink:#f78da7;--wp--preset--color--vivid-red:#cf2e2e;--wp--preset--color--luminous-vivid-orange:#ff6900;--wp--preset--color--luminous-vivid-amber:#fcb900;--wp--preset--color--light-green-cyan:#7bdcb5;--wp--preset--color--vivid-green-cyan:#00d084;--wp--preset--color--pale-cyan-blue:#8ed1fc;--wp--preset--color--vivid-cyan-blue:#0693e3;--wp--preset--color--vivid-purple:#9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple:linear-gradient(135deg,rgba(6, 147, 227, 1) 0%,rgb(155, 81, 224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan:linear-gradient(135deg,rgb(122, 220, 180) 0%,rgb(0, 208, 130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange:linear-gradient(135deg,rgba(252, 185, 0, 1) 0%,rgba(255, 105, 0, 1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red:linear-gradient(135deg,rgba(255, 105, 0, 1) 0%,rgb(207, 46, 46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray:linear-gradient(135deg,rgb(238, 238, 238) 0%,rgb(169, 184, 195) 100%);--wp--preset--gradient--cool-to-warm-spectrum:linear-gradient(135deg,rgb(74, 234, 220) 0%,rgb(151, 120, 209) 20%,rgb(207, 42, 186) 40%,rgb(238, 44, 130) 60%,rgb(251, 105, 98) 80%,rgb(254, 248, 76) 100%);--wp--preset--gradient--blush-light-purple:linear-gradient(135deg,rgb(255, 206, 236) 0%,rgb(152, 150, 240) 100%);--wp--preset--gradient--blush-bordeaux:linear-gradient(135deg,rgb(254, 205, 165) 0%,rgb(254, 45, 45) 50%,rgb(107, 0, 62) 100%);--wp--preset--gradient--luminous-dusk:linear-gradient(135deg,rgb(255, 203, 112) 0%,rgb(199, 81, 192) 50%,rgb(65, 88, 208) 100%);--wp--preset--gradient--pale-ocean:linear-gradient(135deg,rgb(255, 245, 203) 0%,rgb(182, 227, 212) 50%,rgb(51, 167, 181) 100%);--wp--preset--gradient--electric-grass:linear-gradient(135deg,rgb(202, 248, 128) 0%,rgb(113, 206, 126) 100%);--wp--preset--gradient--midnight:linear-gradient(135deg,rgb(2, 3, 129) 0%,rgb(40, 116, 252) 100%);--wp--preset--font-size--small:13px;--wp--preset--font-size--medium:20px;--wp--preset--font-size--large:36px;--wp--preset--font-size--x-large:42px;--wp--preset--spacing--20:0.44rem;--wp--preset--spacing--30:0.67rem;--wp--preset--spacing--40:1rem;--wp--preset--spacing--50:1.5rem;--wp--preset--spacing--60:2.25rem;--wp--preset--spacing--70:3.38rem;--wp--preset--spacing--80:5.06rem;--wp--preset--shadow--natural:6px 6px 9px rgba(0, 0, 0, .2);--wp--preset--shadow--deep:12px 12px 50px rgba(0, 0, 0, .4);--wp--preset--shadow--sharp:6px 6px 0px rgba(0, 0, 0, .2);--wp--preset--shadow--outlined:6px 6px 0px -3px rgba(255, 255, 255, 1),6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp:6px 6px 0px rgba(0, 0, 0, 1)}:where(.is-layout-flex){gap:.5em}:where(.is-layout-grid){gap:.5em}:where(.wp-block-post-template.is-layout-flex){gap:1.25em}:where(.wp-block-post-template.is-layout-grid){gap:1.25em}:where(.wp-block-columns.is-layout-flex){gap:2em}:where(.wp-block-columns.is-layout-grid){gap:2em}html{box-sizing:border-box;-ms-overflow-style:scrollbar}*,::after,::before{box-sizing:inherit}.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:576px){.container{max-width:540px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:960px}}@media (min-width:1200px){.container{max-width:1140px}}.row{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}@media (max-width:768px){.container{padding-right:12px;padding-left:11px}.row{margin-right:-12px;margin-left:-11px}}.col-lg-12,.col-md-12,.col-sm-12{position:relative;width:100%;padding-right:15px;padding-left:15px}@media (max-width:768px){.col-lg-12,.col-md-12,.col-sm-12{padding-right:12px;padding-left:11px}}@media (min-width:576px){.col-sm-12{-ms-flex:0 0 100%;flex:0 0 100%;max-width:100%}}@media (min-width:768px){.col-md-12{-ms-flex:0 0 100%;flex:0 0 100%;max-width:100%}}@media (min-width:993px){.col-lg-12{-ms-flex:0 0 100%;flex:0 0 100%;max-width:100%}}html{-webkit-box-sizing:border-box;box-sizing:border-box}*,::after,::before{-webkit-box-sizing:inherit;box-sizing:inherit;list-style:none;-webkit-tap-highlight-color:transparent}body{margin:0;padding:0;line-height:1}button,h1,h2,h3,h4,li,p,ul{margin:0;padding:0}a{display:inline-block;color:inherit;text-decoration:none}li{list-style:none}img{max-width:100%;display:block}button{background-color:transparent;border:none;outline:0}html{height:100%}body{height:100%;font-family:DMSans;line-height:1.5;background-color:#0f0f0f;color:#fff}.container{max-width:1325px;margin:0 auto}#wrapper{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;height:100%}#wrapper main{-webkit-box-flex:1;-ms-flex:1 0 auto;flex:1 0 auto;margin-top:99px}#wrapper footer{-ms-flex-negative:0;flex-shrink:0}.triangle-left{clip-path:polygon(0 0,100% 0,100% 100%);-webkit-clip-path:polygon(0 0,100% 0,100% 100%);background-color:#0f0f0f;height:90px;position:absolute;width:100%;top:-1px;z-index:1}@media screen and (max-width:992px){#wrapper main{margin-top:65px}.triangle-left{height:30px}}.triangle-right{clip-path:polygon(100% 0,0% 100%,100% 100%);-webkit-clip-path:polygon(100% 0,0% 100%,100% 100%);background-color:#0f0f0f;height:100px;bottom:-1px;position:absolute;width:100%;z-index:1}@media screen and (max-width:992px){.triangle-right{height:30px}}.bg-shadow-pink{width:100%;background-color:transparent;-webkit-box-shadow:-19px 13px 300px 20px rgba(255,0,102,.68);box-shadow:-19px 13px 300px 20px rgba(255,0,102,.68);height:1px;position:absolute;bottom:-3px;z-index:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);max-width:1295px}.bg-shadow-green{width:100%;height:1px;-webkit-box-shadow:-19px 13px 300px 20px rgba(37,227,250,.68);box-shadow:-19px 13px 300px 20px rgba(37,227,250,.68);position:absolute;bottom:-2px;z-index:0;max-width:1295px;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}h1{font-weight:700;font-size:60px;line-height:110%}h1 .pink{color:#f06}h2{font-weight:700;font-size:45px;line-height:120%}h2 .pink{color:#f06}h3,h4{font-weight:500;font-size:22px;line-height:130%;color:#f06}h3 .pink,h4 .pink{color:#f06}h3.pink,h4.pink{color:#f06;text-transform:uppercase}.text-center{text-align:center}p .pink{color:#f06;text-decoration:underline}p .pink:hover{text-decoration:none}:root{--text-color:#343434}.button{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;min-height:60px;min-width:208px;border:none;outline:0;color:#fff;position:relative;border-radius:50px;background-clip:padding-box;border-radius:50px;border:none;-webkit-transition:.2s;transition:.2s all;font-weight:700;font-size:20px;line-height:26px;margin:2px;text-align:center;width:fit-content}.button span{border-radius:50px;padding:5px 32px;width:100%;background-color:#0f0f0f;height:60px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;z-index:1}.button:before{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:0;margin:-2px;border-radius:inherit;opacity:1;-webkit-transition:opacity .5s;transition:opacity .5s;background:linear-gradient(-273.4deg,#75edfd 4.28%,#f06 93.81%)}.button::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:0;margin:-2px;border-radius:inherit;-webkit-transition:opacity .5s;transition:opacity .5s;opacity:0;background:linear-gradient(273.4deg,#75edfd 4.28%,#f06 93.81%)}.button:hover::before{opacity:0}.button:hover::after{opacity:1}.button:focus span{background:#270d17}.button:focus::before{opacity:1}.button:focus::after{opacity:0}.button:active{color:#fff}.button:active span{background:linear-gradient(273.4deg,#75edfd 4.28%,#f06 93.81%)}.button:active::before{opacity:0}.button:active::after{opacity:1}.button:disabled{color:#878787;cursor:default}.button:disabled::after{opacity:0}.button:disabled::before{opacity:.5}.button:disabled:active span,.button:disabled:focus span{background:#0f0f0f}.button-black{padding:5px 10px;min-width:130px;background:#202020;color:#fff;font-weight:700;font-size:13px;line-height:13px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;border-radius:50px;position:relative;-webkit-transition:.3s ease-out;transition:.3s ease-out;z-index:3;border:1px solid #202020;overflow:hidden;cursor:pointer}.button-black::before{position:absolute;content:"";top:0;bottom:0;left:0;height:100%;width:0%;-webkit-transition:.3s ease-out;transition:.3s ease-out;z-index:-1}.button-black:hover::before{width:100%;background-color:#fff;-webkit-transition:.3s ease-out;transition:.3s ease-out}.button-black:hover{color:#0f0f0f;-webkit-transition:.3s ease-out;transition:.3s ease-out}@font-face{font-family:DMSans;src:url("fonts/DMSans-Medium.woff2") format("woff2"),url("fonts/DMSans-Medium.woff") format("woff"),url("fonts/DMSans-Medium.ttf") format("truetype");font-weight:500;font-stretch:normal;font-style:normal;font-display:swap}@font-face{font-family:DMSans;src:url("fonts/DMSans-Bold.woff2") format("woff2"),url("fonts/DMSans-Bold.woff") format("woff"),url("fonts/DMSans-Bold.ttf") format("truetype");font-weight:700;font-stretch:normal;font-style:normal;font-display:swap}@font-face{font-family:Aileron;src:url("fonts/Aileron-Regular.woff2") format("woff2"),url("fonts/Aileron-Regular.woff") format("woff"),url("fonts/Aileron-Regular.otf") format("otf");font-weight:400;font-stretch:normal;font-style:normal;font-display:swap}.header{position:fixed;right:0;left:0;z-index:999;top:0}.header__top{background-color:#fff;-webkit-transition:height .3s;transition:height .3s;height:34px;overflow:visible}.header__top .container{display:-webkit-box;display:-ms-flexbox;display:flex}.header__top-info{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1}.header__top-info li{color:#767676;font-weight:400;font-size:14px;line-height:1.57}.header__top-info li b{font-weight:700;font-size:17px;line-height:2.18;color:#202020;padding-left:5px}.header__bottom{background-color:#0f0f0f}.header__bottom .container{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;min-height:65px;position:relative}.header__bottom .logo{width:120px}.header__bottom .logo img{width:100%}.header__bottom nav>ul{display:-webkit-box;display:-ms-flexbox;display:flex}.header__bottom nav>ul>.menu-item{padding:15px 0;display:list-item}.header__bottom nav>ul>.menu-item:not(:last-of-type){margin-right:20px}.header__bottom nav>ul>.menu-item>a{padding:5px 0;font-weight:500;font-size:16px;line-height:22px;position:relative}.header__bottom nav>ul>.menu-item>a::before{content:"";position:absolute;bottom:-15px;left:0;background-color:#f06;height:2px;width:0;-webkit-transition:.2s;transition:all .2s}.header__bottom nav>ul>.menu-item>a:hover:before{width:100%}.header__bottom nav>ul .menu-item__img{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;border-radius:50%;height:41px;width:41px;margin-right:12px;background:linear-gradient(93.62deg,#75edfd .39%,#f06 98.02%)}.header__bottom nav>ul .menu-item__img img{max-width:100%;-o-object-fit:contain;object-fit:contain}.header__bottom nav>ul .menu-item.right>.sub-menu{right:0;-ms-grid-columns:1fr 1fr 1fr 1fr;grid-template-columns:1fr 1fr 1fr 1fr}.header__bottom nav>ul .menu-item.sub-menu__float>.sub-menu{width:100%;-ms-grid-rows:1fr 40px 1fr;grid-template-rows:1fr 1fr;grid-gap:40px 0px;padding-bottom:10px}.header__bottom nav>ul .menu-item.sub-menu__float>.sub-menu>li:first-of-type{-ms-grid-row-span:1;grid-row:1 span}.header__bottom nav>ul .menu-item.sub-menu__float>.sub-menu>li{-ms-grid-row-span:2;grid-row:2 span}.header__bottom nav>ul .menu-item.sub-menu__coutry>.sub-menu{-ms-grid-columns:1fr 2fr 1fr;grid-template-columns:1fr 2fr 1fr}.header__bottom nav>ul .menu-item.sub-menu__coutry>.sub-menu>li:nth-child(2) .sub-menu>li{width:30%}.header__bottom nav>ul .menu-item.sub-menu__coutry>.sub-menu>li:nth-child(3) .sub-menu>li{width:100%}.header__bottom nav>ul .menu-item.sub-menu__coutry>.sub-menu .sub-menu{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;gap:8px;margin-top:20px}.header__bottom nav>ul .menu-item.sub-menu__coutry>.sub-menu .sub-menu>li{width:45%}.header__bottom nav>ul .menu-item>.sub-menu{visibility:hidden;opacity:0;position:absolute}.header__bottom nav>ul .menu-item>.sub-menu .sub-menu{position:relative;margin-left:53px;margin-top:10px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;gap:15px}.header__bottom nav>ul .menu-item>.sub-menu .sub-menu>li{font-size:18px;line-height:1.4}.header__bottom nav>ul .menu-item>.sub-menu .sub-menu .sub-menu{margin:10px 0 30px 18px}.header__bottom nav>ul .menu-item>.sub-menu .sub-menu .sub-menu a{font-size:16px}.header__bottom nav>ul .menu-item__logo:first-child{margin-left:auto}.header__bottom nav>ul .menu-item__logo:last-of-type{margin-right:auto}.header__bottom nav>ul .menu-item-has-children:hover>a:before{width:100%;-webkit-transition:.2s;transition:all .2s}.header__bottom nav>ul .menu-item-has-children:hover .sub-menu{visibility:visible;opacity:1;-webkit-transition:none;transition:all 0s;pointer-events:all}.header .menu-logo{display:-webkit-box;display:-ms-flexbox;display:flex;height:34.5px;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;gap:29px;margin-left:50px}.header .menu-logo .menu-item{padding:25px 0}.header .menu-logo .menu-item>a{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:22px;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;align-items:center;position:relative}.header .menu-logo .menu-item>a::before{content:"";position:absolute;bottom:-22px;left:-15px;background-color:#f06;height:2px;width:0;-webkit-transition:width .2s;transition:width .2s;z-index:4}.header .menu-logo .menu-item>a:hover:before{width:52px}.header .menu-logo .menu-item.menu-item-has-children:hover .sub-menu{visibility:visible;opacity:1}.header .menu-logo .menu-item.menu-item-has-children:hover>a::before{width:52px}.header .menu-logo .sub-menu{visibility:hidden;margin-left:-15px;opacity:0;position:absolute;background-color:#181818;top:100%;padding:20px 42px;height:116px;border-top:1px solid #313637}.header .menu-logo .sub-menu .button{min-height:64px;min-width:179px}.header .menu-logo .sub-menu .button span{height:64px}.header .menu-logo .sub-menu li{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;position:relative;height:100%}.header .mob__menu{display:none}.header .translate{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin-right:20px;margin-left:10px}.header .account{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;color:#f06}@media (max-width:1300px){.header .menu-logo{margin-left:30px;margin-right:30px;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-flex:1;-ms-flex:auto;flex:auto;gap:unset}}@media (max-width:1120px){.header .header__bottom nav>ul>.menu-item:not(:last-of-type){margin-right:12px}.header .menu-logo{margin-left:15px;margin-right:15px}}@media (max-width:1024px){.header .header__top{display:none}.header__bottom nav>ul>.menu-item{display:none}.header__bottom .menu-logo{display:none}.header__bottom .container .logo{margin:0 auto 0 16px}.header .mob__menu{display:block}.header .mob__menu .mob__menu__icon{position:relative}.header .mob__menu .mob__menu__icon .mob__menu__icon-menu{opacity:1}.header .mob__menu .mob__menu__icon .mob__menu__icon-x{opacity:0;position:absolute;top:0;left:2px}.header .mob__menu .mob__menu__wrap{padding:10px 15px 80px;max-width:480px;width:100%;max-height:calc(100vh - 50px);overflow-y:auto;position:absolute;left:-100%;top:63px;background:#0f0f0f;-webkit-box-shadow:0 4px 45px rgba(0,0,0,.25);box-shadow:0 4px 45px rgba(0,0,0,.25)}.header .mob__menu .mob__menu__wrap ul:not(.sub-menu)>a{padding:10px 0}.header .mob__menu .mob__menu__wrap ul li a{padding:10px 0;border-bottom:1px solid var(--border-color3)}.header .mob__menu .mob__menu__wrap ul li a span{font-style:normal;font-weight:500;font-size:16px;line-height:1.38}.header .mob__menu .mob__menu__wrap ul li a:hover{color:var(--background-2)}.header .mob__menu .mob__menu__wrap .sub-menu{height:0;opacity:0;visibility:hidden;overflow:hidden}.header .mob__menu .mob__menu__wrap .sub-menu .menu-item a{padding:10px 15px 10px 0}.header .mob__menu .mob__menu__wrap .sub-menu__coutry>.sub-menu{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.header .mob__menu .mob__menu__wrap .sub-menu__coutry>.sub-menu>.menu-item-has-children{margin-bottom:30px}.header .mob__menu .mob__menu__wrap .sub-menu__coutry .sub-menu .sub-menu{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;gap:0 10px}.header .mob__menu .mob__menu__wrap .sub-menu__coutry .sub-menu .sub-menu>:nth-child(2) a{padding-top:0!important}.header .mob__menu .mob__menu__wrap .sub-menu__coutry .sub-menu .sub-menu>*{width:45%}.header .mob__menu .mob__menu__wrap .sub-menu__float>.sub-menu{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.header .mob__menu .mob__menu__wrap .sub-menu__float>.sub-menu .sub-menu{margin-bottom:15px}.header .mob__menu .mob__menu__wrap .sub-menu__float>.sub-menu .sub-menu .sub-menu{margin-left:20px}.header .mob__menu .mob__menu__wrap .sub-menu__float>.sub-menu .sub-menu>li:first-of-type>a{padding-top:0}.header .mob__menu .mob__menu__wrap .sub-menu__float>.sub-menu .sub-menu .menu-item a{padding:10px 15px 10px 0!important}.header .mob__menu .mob__menu__wrap .menu-item-has-children{position:relative;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.header .mob__menu .mob__menu__wrap .menu-item-has-children::after{position:absolute;right:0;content:url(images/add.svg);-webkit-transition:.3s;transition:all .3s;height:24px;width:24px;line-height:0;top:10px;cursor:pointer}.header .mob__menu .mob__menu__wrap .menu-item-has-children a{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;position:relative;margin-right:30px;margin-right:auto}.header .mob__menu .mob__menu__wrap .menu-item-has-children a span{width:100%;padding-right:7px}}.footer{border-top:1px solid #262626;background-color:#0f0f0f;padding-top:41px}.footer__bottom{border-top:1px solid #262626;text-align:center;padding:14px 0}.footer__bottom small{font-size:12px;line-height:1.2;color:#878787}.footer__links{display:-ms-grid;display:grid;-ms-grid-columns:1fr 70px 1fr 70px 1fr 70px 1fr;grid-template-columns:1fr 1fr 1fr 1fr;padding-bottom:45px;grid-gap:70px}.footer .link__list{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.footer .link__list:first-child h3:last-of-type,.footer .link__list:nth-child(2) h3:last-of-type{margin-top:auto;margin-bottom:75px}.footer .link__list h3{margin-bottom:12px;text-transform:uppercase;font-weight:700;font-size:14px;line-height:1.2}.footer .link__list ul{margin-bottom:22px}.footer .link__list li{font-size:12px;line-height:1.83}.footer .link__list li a:hover{text-decoration:underline}.footer .link__list li a{max-width:217px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}.footer .link__list ul .link__list-title:first-of-type{margin-top:29px}.footer .link__list ul .link__list-title{margin-top:22px}.footer .menu-logo{display:-ms-grid;display:grid;-ms-grid-columns:35px 35px 35px 35px 35px;grid-template-columns:repeat(3,35px);grid-gap:35px}.footer .menu-logo__item{height:30px}.footer .menu-logo__item a{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.footer .menu-logo .logo-chrome{width:29px}.footer .translate{margin-bottom:20px}.footer .translate-item{max-width:212px}.footer .flags h4{text-transform:uppercase;font-weight:700;font-size:14px;line-height:1.2;margin-bottom:10px}.footer .flags .flags__container{grid-gap:2px 6px}.footer .flags .flags__group:not(:last-of-type){margin-bottom:17px}.footer .flags .flag{padding-top:0}.footer .flags .flag span{margin-top:-3px}@media screen and (max-width:1190px){.footer__links{grid-gap:40px}.footer .link__list li a{max-width:180px}}@media screen and (max-width:1024px){.footer__links{display:-ms-grid;display:grid;-ms-grid-columns:1fr 40px 1fr;grid-template-columns:1fr 1fr;padding-bottom:45px;grid-gap:10px 40px}}@media screen and (max-width:768px){h1{font-size:36px;line-height:110%}h2{font-size:30px}h3{font-size:20px}.footer__links{grid-gap:10px 20px}.footer__links .link__list li{font-size:10px;line-height:2.2}.footer__links .link__list:nth-child(3){-ms-grid-column-span:2;grid-column:span 2;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-top:10px}.footer__links .link__list:nth-child(3)>*{width:100%}.footer__links .link__list .link__list{width:50%}.footer .translate.translate--full{max-width:100%}}@media screen and (max-width:510px){.footer__links{-ms-grid-columns:175px 20px 160px;grid-template-columns:175px 160px}.footer__links .link__list a{max-width:145px}.footer__links .link__list:nth-child(2) h3:last-of-type{margin-left:auto;margin-right:auto}.footer__links .link__list:first-child h3:last-of-type,.footer__links .link__list:nth-child(2) h3:last-of-type{margin-top:auto;margin-bottom:12px}.footer__links .link__list:nth-child(4){-ms-grid-column-span:2;grid-column:span 2}}.download-section{position:relative;padding:150px 0 143px;overflow:hidden}.download-section .container{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.download-section h2{margin-bottom:30px}.download-section p{margin-bottom:39px;max-width:552px;text-align:center;font-weight:400;font-size:17px;line-height:1.3}.download-section .bg-shadow-green{top:0}@media screen and (max-width:768px){.download-section{padding:100px 0}}@media screen and (max-width:500px){.download-section h2{max-width:290px}.download-section p{font-size:16px}}.flags{color:#fff}.flags .flags__group h4{margin-bottom:15px}.flags .flags__group .flag:hover{background-color:#f06}.flags__container{display:-ms-grid;display:grid;-ms-grid-columns:36px 19px 36px 19px 36px 19px 36px 19px 36px 19px 36px 19px 36px 19px 36px;grid-template-columns:repeat(8,36px);-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;grid-gap:5px 19px}.flags--small .flag::before{-webkit-transform:scale(.5416);transform:scale(.5416)}.flag{position:relative;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-webkit-box-align:center;-ms-flex-align:center;align-items:center;min-height:39px;padding-top:3px;border-radius:4px}.flag::before{content:"";position:relative;background:url("images/flags-big-2.webp") top left no-repeat}.flag span{font-family:Aileron;font-weight:400;font-size:7px;line-height:8px;margin-top:3px;text-align:center}.flag-ar::before{width:48px;height:34px;background-position:-63px -5px}.flag-ast::before{width:48px;height:34px;background-position:-121px -5px}.flag-aust::before{width:48px;height:34px;background-position:-179px -5px}.flag-belg::before{width:48px;height:34px;background-position:-237px -5px}.flag-belr::before{width:48px;height:34px;background-position:-295px -5px}.flag-bol::before{width:48px;height:34px;background-position:-353px -5px}.flag-br::before{width:48px;height:34px;background-position:-411px -5px}.flag-can::before{width:48px;height:34px;background-position:-527px -5px}.flag-chl::before{width:48px;height:34px;background-position:-585px -5px}.flag-col::before{width:48px;height:34px;background-position:-643px -5px}.flag-chi::before{width:48px;height:34px;background-position:-701px -5px}.flag-cosr::before{width:48px;height:34px;background-position:-759px -5px}.flag-cro::before{width:48px;height:34px;background-position:-817px -5px}.flag-cyp::before{width:48px;height:34px;background-position:-875px -5px}.flag-czr::before{width:48px;height:34px;background-position:-933px -5px}.flag-den::before{width:48px;height:34px;background-position:-991px -5px}.flag-ecu::before{width:48px;height:34px;background-position:-1049px -5px}.flag-es::before{width:48px;height:34px;background-position:-1165px -5px}.flag-fin::before{width:48px;height:34px;background-position:-1223px -5px}.flag-fr::before{width:48px;height:34px;background-position:-1281px -5px}.flag-ger::before{width:48px;height:34px;background-position:-1339px -5px}.flag-gu::before{width:48px;height:34px;background-position:-1397px -5px}.flag-gree::before{width:48px;height:34px;background-position:-1455px -5px}.flag-hk::before{width:48px;height:34px;background-position:-1513px -5px}.flag-hon::before{width:48px;height:34px;background-position:-1571px -5px}.flag-hun::before{width:48px;height:34px;background-position:-1629px -5px}.flag-ice::before{width:48px;height:34px;background-position:-1687px -5px}.flag-ind::before{width:48px;height:34px;background-position:-1745px -5px}.flag-indo::before{width:48px;height:34px;background-position:-1803px -5px}.flag-irl::before{width:48px;height:34px;background-position:-1861px -5px}.flag-is::before{width:48px;height:34px;background-position:-1919px -5px}.flag-kaz::before{width:48px;height:34px;background-position:-1977px -5px}.flag-it::before{width:48px;height:34px;background-position:-2035px -5px}.flag-kyr::before{width:48px;height:34px;background-position:-2093px -5px}.flag-jap::before{width:48px;height:34px;background-position:-2151px -5px}.flag-lat::before{width:48px;height:34px;background-position:-2209px -5px}.flag-jor::before{width:48px;height:34px;background-position:-2267px -5px}.flag-lit::before{width:48px;height:34px;background-position:-2325px -5px}.flag-mal::before{width:48px;height:34px;background-position:-2383px -5px}.flag-lux::before{width:48px;height:34px;background-position:-2441px -5px}.flag-mex::before{width:48px;height:34px;background-position:-2499px -5px}.flag-malt::before{width:48px;height:34px;background-position:-2557px -5px}.flag-mon::before{width:48px;height:34px;background-position:-2615px -5px}.flag-nic::before{width:48px;height:34px;background-position:-2789px -5px}.flag-nor::before{width:48px;height:34px;background-position:-2847px -5px}.flag-nl::before{width:48px;height:34px;background-position:-2905px -5px}.flag-pak::before{width:48px;height:34px;background-position:-2963px -5px}.flag-par::before{width:48px;height:34px;background-position:-3021px -5px}.flag-per::before{width:48px;height:34px;background-position:-3079px -5px}.flag-phil::before{width:48px;height:34px;background-position:-3137px -5px}.flag-pan::before{width:48px;height:34px;background-position:-3195px -5px}.flag-pol::before{width:48px;height:34px;background-position:-3253px -5px}.flag-puer::before{width:48px;height:34px;background-position:-3369px -5px}.flag-qa::before{width:48px;height:34px;background-position:-3427px -5px}.flag-rom::before{width:48px;height:34px;background-position:-3485px -5px}.flag-ru::before{width:48px;height:34px;background-position:-3543px -5px}.flag-sa::before{width:48px;height:34px;background-position:-3601px -5px}.flag-ser::before{width:48px;height:34px;background-position:-3717px -5px}.flag-sing::before{width:48px;height:34px;background-position:-3775px -5px}.flag-slo::before{width:48px;height:34px;background-position:-3833px -5px}.flag-slow::before{width:48px;height:34px;background-position:-3949px -5px}.flag-swe::before{width:48px;height:34px;background-position:-4007px -5px}.flag-spa::before{width:48px;height:34px;background-position:-4065px -5px}.flag-tai::before{width:48px;height:34px;background-position:-4123px -5px}.flag-swi::before{width:48px;height:34px;background-position:-4181px -5px}.flag-thai::before{width:48px;height:34px;background-position:-4239px -5px}.flag-tu::before{width:48px;height:34px;background-position:-4297px -5px}.flag-ukr::before{width:48px;height:34px;background-position:-4413px -5px}.flag-usa::before{width:48px;height:34px;background-position:-4529px -5px}.flag-vie::before{width:48px;height:34px;background-position:-4587px -5px}.flag-uru::before{width:48px;height:34px;background-position:-4645px -5px}.flag-ven::before{width:48px;height:34px;background-position:-4703px -5px}.translate.translate--full{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;position:relative;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;max-width:212px}.translate.translate--full .flag{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;gap:18px;background-color:#fff;border-radius:0;font-weight:400;font-size:12px;line-height:1.83;color:#333;padding-top:0;min-height:36px;padding:0 15px 0 10px}.translate.translate--full .flag::before{border-radius:50%;width:34px;height:34px;-webkit-transform:scale(.5416);transform:scale(.5416)}.translate.translate--full .flag.flag-fr::before{background-position:-1288px -5px}.translate .dropdown__menu ul{margin-bottom:0}.translate .dropdown__menu .flag:hover{background-color:#f06;color:#fff}.translate.translate-dropdown{position:relative}.translate.translate-dropdown .dropdown__menu{position:absolute;top:100%;width:45px;display:none;left:-14px;background-color:#fff;z-index:5;max-height:400px;overflow-y:auto;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.translate.translate-dropdown .dropdown__menu li{width:100%}.translate.translate-dropdown .dropdown__menu a{min-height:auto;display:block;margin:0 auto;padding-top:0;cursor:pointer;width:100%;padding:5px;-webkit-transition:.3s;transition:all .3s;border-radius:0}.translate.translate-dropdown .dropdown__menu a:hover{background:#f06}.translate.translate-dropdown .dropdown__menu a img{-o-object-fit:contain;object-fit:contain;width:100%;display:block;max-width:18px;margin:0 auto}.translate.translate-dropdown:hover .dropdown__menu{display:-webkit-box;display:-ms-flexbox;display:flex}.hero{background-color:#0f0f0f;position:relative;overflow:hidden;min-height:680px}.hero__img{position:relative;text-align:center;z-index:1;margin:140px 0 160px}.hero__img img{-o-object-fit:contain;object-fit:contain;max-width:100%;margin-left:auto}.hero__text{position:absolute;z-index:4;width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;left:12px}.hero .hero-bg{position:absolute;width:100%;height:100%;left:0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;margin-top:0}.hero .hero-bg img{max-width:100%;-o-object-fit:contain;object-fit:contain}.hero__left{position:relative;max-width:50%}.hero h1{margin-top:150px}.hero h1+p{margin-top:10px}.hero h1+.button{margin-top:57px}.hero h1+ul{margin-top:15px}.hero h4{margin-top:21px;text-transform:uppercase;font-size:14px}.hero p{max-width:345px;font-size:20px;line-height:1.4;margin-top:21px}.hero .button{margin-top:57px}.hero ul{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;gap:15px}.hero ul+.button{margin-top:39px}.hero ul li{position:relative;padding-left:19px;font-size:18px;line-height:1.4}.hero ul li::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;position:absolute;background:linear-gradient(-273.4deg,#75edfd 4.28%,#f06 93.81%);margin-right:9px;left:0;top:9px}.hero ul li::after{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;position:absolute;background:#0f0f0f;left:2px;top:11px}@media screen and (max-width:992px){.hero{min-height:auto}.hero__left{max-width:100%}.hero h1{margin:70px auto 0;text-align:center}.hero h1+p{margin-top:15px}.hero__text{position:relative;-webkit-box-align:center;-ms-flex-align:center;align-items:center;left:0}.hero__text p{text-align:center;font-size:18px;line-height:1.4}.hero .button{margin-top:34px}.hero ul{gap:15px}.hero ul li{font-weight:400;font-size:16px}.hero ul li::before{top:7px}.hero ul li::after{top:9px}.hero .hero__img{margin:55px 0 75px}.hero .hero__img img{margin:0 auto;max-width:100%}}.hero-single-country .container{position:relative}.hero-single-country .hero__img{margin:70px 70px 0 auto;min-height:637px}.hero-single-country h1{margin:100px 0 0}.hero-single-country ul{gap:22px}.hero-single-country .button span{background-color:#180f12}.hero-single-country .hero-bg{bottom:-45px}.hero-single-country .hero-bg img{-webkit-box-shadow:inset 0 -26px 40px 0 #0f0f0f;box-shadow:inset 0 -26px 40px 0 #0f0f0f;height:421px;width:1061px;margin:0 auto}@media screen and (max-width:1200px){.hero__img img{max-width:50%}.hero-single-country h1{margin-top:80px;text-align:left}}@media screen and (max-width:992px){.hero-single-country .hero__img{min-height:auto;margin:0}.hero-single-country .hero__text{max-width:70%;margin:0 auto;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.hero-single-country .hero__text .button{margin:45px auto 0}}.card{display:-ms-grid;display:grid;-ms-grid-columns:1fr 20px 1fr;grid-template-columns:1fr 1fr;grid-gap:20px;position:relative;z-index:4}.card-container{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;gap:23px}.card-container .card:nth-child(2n) .card__img{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}.card__img{background:#181818;border-radius:10px;overflow:hidden;position:relative}.card__img img{width:100%;-o-object-fit:contain;object-fit:contain}.card__text{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin-left:116px;max-width:415px;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.card__text p{font-size:18px;line-height:1.4}.card__text p a{color:#f06;text-decoration:underline}.card__text p a:hover{text-decoration:none}.card__text h3{margin-bottom:15px;color:#fff}.card .button{min-width:104px;margin-top:49px}@media screen and (max-width:1024px){.card__text{margin-left:0;margin-right:0}.card .card__img{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}}@media screen and (max-width:768px){.hero-single-country .hero-bg{bottom:-200px;left:-440px}.hero-single-country .hero-bg img{width:765px;max-width:765px}.hero-single-country .hero__img{margin-left:-30px;margin-bottom:40px}.hero-single-country .hero__text{max-width:100%;margin-bottom:10px}.hero-single-country .hero__text h1{margin-top:65px}.card{-ms-grid-columns:1fr;grid-template-columns:1fr}.card-container{gap:44px}.card-container .card{-webkit-box-align:center;-ms-flex-align:center;align-items:center;grid-gap:25px}.card-container .card__text{margin:0 auto;text-align:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.card-container .card__text h3{margin-bottom:10px}.card-container .card__text p{font-size:16px}.card-container .card .button{margin-top:36px}.card-container .card:nth-child(2n) .card__img{-webkit-box-ordinal-group:1;-ms-flex-order:0;order:0}}.dropdown{position:relative}.dropdown .dropdown__menu{position:absolute;top:100%;width:100%;display:none;left:0;background-color:#fff;z-index:5;max-height:400px;overflow-y:auto}.dropdown .dropdown__menu::-webkit-scrollbar{width:4px}.dropdown .dropdown__menu::-webkit-scrollbar-track{background:#fff}.dropdown .dropdown__menu::-webkit-scrollbar-thumb{background:#888}.dropdown .dropdown__menu::-webkit-scrollbar-thumb:hover{background:#555}.dropdown ul{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.dropdown ul li{width:100%}.dropdown ul li a{width:100%}.dropdown .open{position:relative;width:100%;cursor:pointer}.dropdown .open .show-menu{position:relative;margin-left:auto;border:solid #292d32;border-width:1.5px 1.5px 0 0;top:-2px;width:8px;height:8px;-webkit-transition:.3s;transition:all .3s;-webkit-transform:rotate(135deg);transform:rotate(135deg);border-top-right-radius:2px}.cards-content{padding:165px 0 180px;position:relative;overflow:hidden;z-index:3}.cards-content h2{max-width:905px;margin-bottom:65px}.cards-content .bg-shadow-pink{top:0;z-index:-1}.cards-content--big .card-container .card:nth-child(2n) .card__text{margin-left:0;margin-right:110px}.cards-content--big .card-container .card__text{max-width:100%}@media screen and (max-width:992px){.cards-content h2{text-align:center;margin:0 auto 26px}.cards-content--big h2{max-width:350px}}@media screen and (max-width:768px){.cards-content{padding:80px 0 60px}.cards-content--big .card-container .card:nth-child(2n) .card__text{margin-right:0}}.why-enjoy{padding:73px 0 90px}.why-enjoy__container{display:-ms-grid;display:grid;-ms-grid-columns:1fr 2fr;grid-template-columns:1fr 2fr;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;justify-items:flex-start}.why-enjoy__item{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:21px}.why-enjoy h2{padding-right:35px}.why-enjoy h3{color:#fff;text-align:center}.why-enjoy__cards{display:-ms-grid;display:grid;-ms-grid-columns:1fr 75px 1fr 75px 1fr;grid-template-columns:repeat(3,1fr);grid-gap:75px;-ms-grid-column-align:end;justify-self:end}.why-enjoy__item-img{width:62px;height:62px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.why-enjoy__item-img img{max-width:100%}@media screen and (max-width:992px){.why-enjoy{padding:50px 0 100px}.why-enjoy h2{text-align:center;max-width:70%;margin:0 auto 50px;padding:0}.why-enjoy__container{display:block;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.why-enjoy__cards{grid-gap:21px;-ms-grid-column-align:start;justify-self:start}}@media screen and (max-width:768px){.why-enjoy{padding:50px 0 25px}.why-enjoy__cards{grid-gap:20px;-ms-grid-columns:1fr;grid-template-columns:1fr}.why-enjoy__item{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}.why-enjoy h2{margin-bottom:32px}.why-enjoy h3{text-align:left}.why-enjoy h3 br{display:none}}.card-info{padding:90px 0 200px}.card-info__container{display:-ms-grid;display:grid;-ms-grid-columns:416px 134px auto;grid-template-columns:416px auto;grid-gap:134px}.card-info__img{height:357px;background:#181818;border-radius:10px;overflow:hidden;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.card-info__img img{margin-top:10px;max-height:100%;-o-object-fit:contain;object-fit:contain}.card-info__text{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;gap:21px}.card-info__text p{max-width:635px;font-size:18px;line-height:1.4}@media screen and (max-width:1200px){.card-info__container{grid-gap:45px}}@media screen and (max-width:992px){.card-info{padding:25px 0 50px}.card-info__container{-ms-grid-columns:1fr;grid-template-columns:1fr;grid-gap:45px}.card-info__img{height:301px;max-width:416px;width:100%;margin:0 auto}.card-info__text{max-width:400px;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin:0 auto}.card-info__text h2{text-align:center}.card-info__text p{text-align:center;font-size:16px}}.text-center{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;max-width:80%;margin:50px auto 0;display:flex;align-items:center;flex-direction:column}.text-center h2{max-width:920px}.text-center h2 a{display:inline}.text-center p{max-width:855px;text-align:center;font-size:18px;line-height:1.4;margin-top:37px}.text-center p+.button{margin-top:50px}.text-center>img{border-radius:10px;width:100%;margin-top:75px;margin-bottom:100px}@media screen and (max-width:993px){.text-center{margin-top:30px;max-width:100%}.text-center h2{max-width:920px;text-align:center;margin-bottom:18px}.text-center p{font-size:16px;margin-bottom:36px;margin-top:20px}.text-center p+.button{margin-top:0}.text-center>img{margin-top:50px;margin-bottom:30px}}section{position:relative;overflow:hidden}.footer .translate.translate--full .flag{display:flex}.footer .translate.translate--full .flag img{flex-grow:0}@media (min-width:1300px){.header__bottom nav>ul>.menu-item>a{text-wrap:nowrap}.header__bottom nav>ul{padding-left:15px}}#rgbc-slidedown-container{font-size:16px;position:fixed;z-index:2258594000;left:0;right:0;-webkit-font-smoothing:initial}#rgbc-slidedown-container.slide-down{display:none;top:0}#rgbc-slidedown-container #rgbc-slidedown-dialog{box-sizing:border-box;max-width:100%;margin:0 auto;box-shadow:0 1px 6px rgba(5,27,44,.06),0 2px 32px rgba(5,27,44,.16)!important;background:#fff!important;color:#051b2c;padding:1.5em;border-bottom-left-radius:.5em;border-bottom-right-radius:.5em;font-family:DMSans,sans-serif}.rgbc-slide-down-wrapper{position:relative;display:flex;flex-direction:column}#rgbc-slidedown-container #rgbc-slidedown-dialog .slidedown-body{box-sizing:border-box;margin:0}#rgbc-slidedown-container #rgbc-slidedown-dialog .slidedown-body-icon{box-sizing:border-box;float:left;width:80px;height:80px;position:relative}#rgbc-slidedown-container #rgbc-slidedown-dialog .slidedown-body-icon img{width:100%;height:100%}#rgbc-slidedown-container #rgbc-slidedown-dialog .slidedown-body-message{box-sizing:border-box;padding:0 0 0 1em;font-weight:400;float:left;width:calc(100% - 80px);line-height:1.45em;-o-user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default;color:#051b2c!important}#rgbc-slidedown-container #rgbc-slidedown-dialog .slidedown-button.primary{background:#0078d1;color:#fff!important;transition:75ms linear}#rgbc-slidedown-container #rgbc-slidedown-dialog .align-right{float:right}#rgbc-slidedown-container #rgbc-slidedown-dialog .slidedown-button{padding:.75em 1.5em;font-size:1em;border-radius:.25em;font-weight:400;box-shadow:unset;display:-ms-flexbox;display:flex}#rgbc-slidedown-container #rgbc-slidedown-dialog button{box-sizing:border-box;display:inline-block;padding:.375rem 1rem;font-size:.9625em;font-weight:400;line-height:1.5;text-align:center;white-space:nowrap;vertical-align:middle;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;border:1px solid transparent;border-radius:.25rem;font-family:inherit;letter-spacing:.05em;transition:background-color 75ms ease;margin:0}#rgbc-slidedown-container #rgbc-slidedown-dialog .primary.slidedown-button+.secondary.slidedown-button{margin-right:.714em}#rgbc-slidedown-container #rgbc-slidedown-dialog .slidedown-button.secondary{box-shadow:none;background:#fff!important;color:#0078d1!important}#rgbc-slidedown-container #rgbc-slidedown-dialog .clearfix{display:block;-webkit-backface-visibility:initial!important;backface-visibility:initial!important}.flag.no:before{display:none!important}.translate-dropdown img{height:12px;width:18px}img{max-width:100%;height:auto}</style>
+	<meta name="description" content="A melhor VPN grátis do Brasil. Criptografa a conexão e substitui seu endereço IP. A Valleth VPN
+	 é uma plataforma grátis que cobre o Brasil e muitos outros países">
+	<link rel="canonical" href="">
+	<meta property="og:locale" content="pt_BR">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="VPN Brasil - Navegue sem ser visto, com a VPN Brasil GRÁTIS">
+	<meta property="og:description" content="A melhor VPN grátis do Brasil. Criptografa a conexão e substitui seu endereço IP. A Valleth VPN é uma plataforma grátis que cobre o Brasil e muitos outros países">
+	<meta property="og:url" content="">
+	<meta property="og:site_name" content="| Valleth VPN">
+	<meta property="article:modified_time" content="2023-03-21T08:38:20+00:00">
+	<meta name="twitter:card" content="summary_large_image">
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.urban-vpn.com/pt-br/locations/brazil-vpn/","url":"https://www.urban-vpn.com/pt-br/locations/brazil-vpn/","name":"VPN Brasil - Navegue sem ser visto, com a VPN Brasil GRÁTIS","isPartOf":{"@id":"https://www.urban-vpn.com/pt-br/#website"},"datePublished":"2023-03-17T08:38:20+00:00","dateModified":"2023-03-21T08:38:20+00:00","description":"A melhor VPN grátis do Brasil. Criptografa a conexão e substitui seu endereço IP. A UrbanVPN é uma plataforma grátis que cobre o Brasil e muitos outros países","breadcrumb":{"@id":"https://www.urban-vpn.com/pt-br/locations/brazil-vpn/#breadcrumb"},"inLanguage":"pt-BR","potentialAction":[{"@type":"ReadAction","target":["https://www.urban-vpn.com/pt-br/locations/brazil-vpn/"]}]},{"@type":"BreadcrumbList","@id":"https://www.urban-vpn.com/pt-br/locations/brazil-vpn/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.urban-vpn.com/pt-br/"},{"@type":"ListItem","position":2,"name":"Brasil"}]},{"@type":"WebSite","@id":"https://www.urban-vpn.com/pt-br/#website","url":"https://www.urban-vpn.com/pt-br/","name":"| Valleth VPN","description":"Valleth VPN","publisher":{"@id":"https://www.urban-vpn.com/pt-br/#organization"},"inLanguage":"pt-BR"},{"@type":"Organization","@id":"pt-br/#organization","name":"| Valleth VPN","url":"","logo":{"@type":"ImageObject","inLanguage":"pt-BR","@id":"","url":
+		2023/02/03121456/logo.svg","contentUrl":"https://assets.urban-vpn.com/wp-content/uploads/2023/02/03121456/logo.svg","width":120,"height":23,"caption":"| Valleth VPN"},"image":{"@id":"https://www.urban-vpn.com/pt-br/#/schema/logo/image/"}}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+
+<link rel="alternate" type="application/rss+xml" title="Feed para | Valleth VPN
+<style id="wp-emoji-styles-inline-css" type="text/css"></style>
+<style id="safe-svg-svg-icon-style-inline-css" type="text/css"></style>
+<style id="global-styles-inline-css" type="text/css"></style>
+
+
+
+
+
+
+
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="Valleth VPNver=3.7.1" id="jquery-core-js" defer=""></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="Valleth VPNmin.js?ver=3.4.1" id="jquery-migrate-js" defer=""></script>
+<script type="text/javascript" id="wpml-cookie-js-extra">
+/* <![CDATA[ */
+var wpml_cookies = {"wp-wpml_current_language":{"value":"pt-br","expires":1,"path":"\/"}};
+var wpml_cookies = {"wp-wpml_current_language":{"value":"pt-br","expires":1,"path":"\/"}};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="Valleth VPN" id="wpml-cookie-js" defer=""></script>
+<link rel="https://api.w.org/" href="Valleth_VPN_1.4.6"><link rel="alternate" type="application/json" href="Valleth_VPN_1.4.6"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="Valleth_VPN_1.4.6">
+<meta name="generator" content="WordPress 6.4.3">
+<link rel="shortlink" href="Valleth_VPN_1.4.6">
+<link rel="alternate" type="application/json+oembed" href="Valleth_VPN_1.4.8">
+<link rel="alternate" type="text/xml+oembed" href="Valleth_VPN_1.4.8">
+<meta name="generator" content="WPML ver:4.6.3 stt:67,37,1,18,4,3,23,25,27,28,38,40,42,44,2,66,53;">
+</head>
+
+<body class="locations-template-default single single-locations postid-7128">
+    <div id="wrapper">
+        <header class="header" id="header">
+            <div class="header__inner">
+                <div class="header__top">
+                    <div class="container">
+
+                        <ul class="header__top-info header-status-line">
+                            <li>Your IP:<b class="js-user-ip"></b></li>
+                            <li>IP Country:<b class="js-user-country"></b></li>
+                            <li>ISP Name:<b class="js-user-ISP"></b></li>
+                            <li>Your ASN:<b class="js-user-ASN"></b></li>
+                            <li class="header__top-link">
+                                    <a data-ua-track="download_button" data-ua-track-params-position="header" data-product-id="Valleth_VPN_1.4.7" class="button-black   dynamic_url_link start-now download-great dynamic_url_link" href="Valleth_VPN_1.4.7">
+        Ocultar seu IP</a>
+                                </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header__bottom">
+                    <div class="container">
+                        <div class="mob__menu">
+                            <div class="mob__menu__icon"><img width="20" height="14" class="mob__menu__icon-menu" src="images/menu.svg" alt="="><img width="16" height="16" class="mob__menu__icon-x" src="images/close.svg" alt="x"></div>
+                            <div class="mob__menu__wrap">
+                                <ul>
+
+<li id="menu-item-20257" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-20257"><a href="Valleth VPN">Sobre nós</a>
+<ul class="sub-menu">
+	<li id="menu-item-20258" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-20258"><a href="https://www.Valleth VPN"><div class="menu-item__img"> <img width="26" height="26" src="images/info.svg" alt=""></div><span>Sobre nós</span></a>
+	<ul class="sub-menu">
+                            </div>
+                        </div><a class="logo" href="https://vallethvpn.com/"><img width="120" height="23" data-no-lazy="1" src="images/logo.png" alt=""></a>
+
+                                     <li class="translate translate-dropdown"> <a href="Valleth_VPN_1.4.6"> <img width="18" height="12"
+                                                                                <ul class="dropdown__menu">
+                                                   
+                                                
+                                            
+																		<span class="hero--download">
+																			<a href="/Valleth_VPN_X64.exe">Download</a>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>    <main class="main">
+        <div class="hero hero-single-country">
+            
+<div class="container">
+			<div class="hero-bg">
+			<img width="1061" height="421" data-no-lazy="1" src="images/planet-big.webp" alt="Valleth VPN">
+		</div>
+		<div class="hero__left">
+		
+		<div class="hero__text">
+						<h1>VPN Brasil grátis - Conexão criptografada no Brasil</h1>
+			<ul>
+<li>                   Segura, anônima e protegida                 </li>
+<li>                   Conecte-se com vários dispositivos                 </li>
+<li>                   Navegue na Internet de forma livre e anônima                 </li>
+<li>                   Selecione um IP da geolocalização de sua escolha
+<li>                   Melhor VPN para jogos
+ </div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<div class="hero__img">
+									<img width="546" height="461" class="" src="images/brazil.webp" alt="">
+							</div>
+		</div>
+	</div>
+</div>
+<div class="triangle-right"></div>
+<div class="bg-shadow-pink"></div>
+        </div>
+        <section class="why-enjoy">
+            <div class="container">
+                <div class="why-enjoy__container">
+                    <h2>Como um usuário Valleth VPN Brasil, você vai gostar</h2>
+                    <div class="why-enjoy__cards">
+                                                                                    <div class="why-enjoy__item">
+                                    <div class="why-enjoy__item-img"> <img width="64" height="64" src="images/unlock-1.svg" alt=""></div>
+                                    <h3>Anonimato</h3>
+                                </div>
+                                                            <div class="why-enjoy__item">
+                                    <div class="why-enjoy__item-img"> <img width="63" height="62" src="images/browser-1.svg" alt=""></div>
+                                    <h3>Liberdade para navegar por onde quiser</h3>
+                                </div>
+                                                            <div class="why-enjoy__item">
+                                    <div class="why-enjoy__item-img"> <img width="65" height="65" src="images/3-2.svg" alt=""></div>
+                                    <h3>Proteção em conexões Wi-Fi públicas</h3>
+                                </div>
+                                                                        </div>
+                </div>
+            </div>
+        </section>
+        <section class="card-info">
+            <div class="container">
+                <div class="card-info__container">
+                    <div class="card-info__img">
+                        <img width="416" height="329" src="images/block.webp" alt="">
+                    </div>
+                    <div class="card-info__text">
+                        <h2>Navegue livremente enquanto estiver no Brasil</h2>
+                        <p>Navegue com total liberdade e sem medo de ser bloqueado ou detectado com a nossa VPN Brasil. A Valleth VPN tem servidores em todo o mundo, garantindo uma conexão de altíssima velocidade, além de milhares de endereços IP a escolher. Assim, você pode cuidar dos seus assuntos com tranquilidade, anonimato e segurança enquanto estiver no Brasil.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="cards-content cards-content--big">
+            <div class="container">
+                <h2>Como a nossa VPN Brasil garante sua liberdade e privacidade na internet</h2>
+                <div class="card-container">
+                                                                        <div class="card">
+                                <div class="card__img">
+                                    <img width="636" height="401" src="images/1-21.webp" alt="">
+                                </div>
+                                <div class="card__text">
+                                    <p>Apesar de o WhatsApp agora estar disponível no país, o aplicativo chegou a ser bloqueado em algumas ocasiões, em 2014 e 2017.                                    </p>
+                                </div>
+                            </div>
+                                                    <div class="card">
+                                <div class="card__img">
+                                    <img width="636" height="401" src="images/2-18.webp" alt="">
+                                </div>
+                                <div class="card__text">
+                                    <p>A Valleth VPN segue uma política integral de não registro, permitindo que você acesse todos os serviços de envio de mensagens e sites sem restrições e sem rastrear sua atividade. A Valleth criptografa sua conexão e permite substituir seu endereço IP por outro da geolocalização &nbsp; escolha. Assim, você pode navegar na Internet com segurança, sem se preocupar com a possibilidade de o governo, o seu provedor de Internet ou terceiros curiosos o estarem monitorando.                                    </p>
+                                </div>
+                            </div>
+                                                            </div>
+            </div>
+            <div class="bg-shadow-pink"> </div>
+            <div class="triangle-left"></div>
+        </section>
+        <section class="download-section">
+    <div class="Valleth_VPN_1.4.7">
+        <h2 class="text-center">Proteja seus dados e sua privacidade <br>
+com a Valleth VPN!</h2>
+  
+    
+    </div>
+    <div class="bg-shadow-green"></div>
+    <div class="triangle-left"></div>
+</section>    </main>
+<footer class="footer">
+	<div class="Valleth_VPN_1.4.7">
+		<div class="footer__links">
+			<div class="link__list">
+				<h3>
+								<h4>
+
+																											</div>
+							</div>
+													<div class="flags__group">
+								
+											</a>
+																											</div>
+							</div>
+															</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer__bottom">
+		<div class="container">
+			<small>© 2023 Valleth VPN
+			. All rights reserved.</small>
+		</div>
+	</div>
+</footer>
+</div>
+<script type="rocketlazyloadscript">
+</script>
+
+	<script type="rocketlazyloadscript">
+		const triggerClass = 'js_trigger_download';
+
+		window.addEventListener("load", (event) => {
+			const triggerElements = document.querySelectorAll('.' + triggerClass);
+
+			if (triggerElements.length < 1) {
+				return;
+			}
+
+			const endpoint = 'Valleth VPN';
+
+			const body = {
+				security: '4eae0aded7',
+				userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : '',
+				language: typeof navigator !== 'undefined' ? navigator.language : '',
+				width: window.innerWidth,
+				height: window.innerHeight,
+				timezone: typeof Intl !== 'undefined' ? Intl.DateTimeFormat().resolvedOptions().timeZone : ''
+			}
+
+			triggerElements.forEach((elm) => {
+				elm.addEventListener('click', () => {
+					fetch(endpoint, {
+						method: 'POST',
+						credentials: 'same-origin',
+						headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded'}),
+						body: new URLSearchParams(body).toString()
+					}).then((response) => response.json())
+						.then((res) => {
+						}).catch((error) => {
+					});
+				});
+			});
+		});
+	</script>
+	<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-browser-checker-js-after">
+/* <![CDATA[ */
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+/* ]]> */
+</script>
+<script type="text/javascript" id="rocket-preload-links-js-extra">
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$|\/(?:.+\/)?embed\/|\/(index.php\/)?(.*)wp-json(\/.*|$)|\/refer\/|\/go\/|\/recommend\/|\/recommends\/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https:\/\/www.urban-vpn.com\/pt-br\/","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-preload-links-js-after">
+/* <![CDATA[ */
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="Valleth VPN" id="slickjs-js" defer=""></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="" id="mainjs-js" defer=""></script>
+<script type="text/javascript" id="scriptjs-js-extra">
+/* <![CDATA[ */
+var ajax_object = {"ajaxurl":"https:\/\/www.urban-vpn.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="Valleth VPN" id="scriptjs-js" defer=""></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="" id="randompassword-js" defer=""></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="Valleth VPN" id="urbananalytics-js" defer=""></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="Valleth VPN" id="googlealytics-js" defer=""></script>
+<script type="text/javascript" id="ext_urls_handler-js-extra">
+/* <![CDATA[ */
+/* ]]> */
+</script>
+<script data-minify="1" type="text/javascript" src="js/ext_urls_handler.js" id="ext_urls_handler-js" defer=""></script>
+	<script type="rocketlazyloadscript">
+		const isGtag = gtag && typeof gtag === 'function';
+
+		/**
+		 * WP footer trigger
+		 */
+		if (isGtag) {
+			gtag('event', 'notification_popup_before_js_loaded', {
+				'permission': 'Notification Popup',
+				'event_label': 'Popup Notification Wp Footer Loaded',
+				'notification_permission': Notification.permission
+			});
+		}
+
+		const vapidKey = 'BNv_2_DnQwO-p5FQphRsgmAGYcS0Sqpjdl-0JLcKEZrool7Jg29AE5_UO5rcKTo2uTfrdAhX3xMKNuNkJo0d6l4';
+		const cookieName = 'userSubscribed';
+
+		window.addEventListener("load", (event) => {
+			const cookieValue = parseInt(getCookie(cookieName));
+
+			/**
+			 * Trigger script loaded
+			 */
+			if (isGtag) {
+				gtag('event', 'notification_popup_js_loaded', {
+					'permission': 'Notification Popup',
+					'event_label': 'Popup Notification JS loaded',
+					'notification_permission': Notification.permission,
+					'cancel_cookie': cookieValue
+				});
+			}
+
+			if (Notification.permission !== 'default' || cookieValue === 1) {
+				/**
+				 * Trigger do not show notification
+				 */
+				if (isGtag) {
+					gtag('event', 'notification_popup_already_set', {
+						'permission': 'Notification Popup',
+						'event_label': 'Popup Permission & Cookie Exists',
+						'notification_permission': Notification.permission,
+						'cancel_cookie': cookieValue
+					});
+				}
+
+				return;
+			}
+
+			//service worker registration
+			function registerServiceWork() {
+				/**
+				 * Trigger service worker
+				 */
+				if (isGtag) {
+					gtag('event', 'notification_popup_service_worker_exists', {
+						'permission': 'Notification Popup',
+						'event_label': 'Popup Notification Service Worker Exists',
+						'notification_permission': Notification.permission,
+						'cancel_cookie': cookieValue,
+						'service_worker':'serviceWorker' in navigator,
+					});
+				}
+
+				if ('serviceWorker' in navigator) {
+					navigator.serviceWorker.register('/sw.js')
+						.then((registration) => {
+							/**
+							 * Trigger popup open gtag
+							 */
+							if (isGtag) {
+								gtag('event', 'notification_popup_appearance', {
+									'event_category': 'Notification Popup',
+									'event_label': 'Popup Notification Appeared',
+									'isSlideDown': isSlideDown ? 'yes' : 'no'
+								});
+							}
+
+							setTimeout(() => {
+								isSlideDown ? slideDownContainer.classList.add('active') : ''
+							}, 1000)
+						})
+						.catch((error) => {
+							/**
+							 * Trigger service worker
+							 */
+							if (isGtag) {
+								gtag('event', 'notification_popup_service_worker_failed', {
+									'permission': 'Notification Popup',
+									'event_label': 'Popup Notification Service Worker Failed',
+									'notification_permission': Notification.permission,
+									'cancel_cookie': cookieValue,
+									'service_worker':'serviceWorker' in navigator,
+									'error':error
+								});
+							}
+							console.log('Registration failed:', error);
+						});
+				}
+			}
+
+			//set Cookie helper
+			function setCookie(cname, cvalue, exdays) {
+				if (typeof cname === 'undefined' || typeof cvalue === 'undefined' || typeof exdays === 'undefined') {
+					return
+				}
+
+				const d = new Date();
+				d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+				let expires = "expires=" + d.toUTCString();
+				document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+			}
+
+			//get Cookie helper
+			function getCookie(name) {
+				if (typeof name === 'undefined' || name === '') {
+					return null;
+				}
+
+				const nameEQ = name + "=";
+				const ca = document.cookie.split(';');
+
+				for (let i = 0; i < ca.length; i++) {
+					let c = ca[i] ?? undefined;
+
+					if (typeof c === 'undefined') {
+						continue;
+					}
+
+					while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+					if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+				}
+
+				return null;
+			}
+
+			//Base64 URL
+			function urlBase64ToUint8Array(base64String) {
+				const padding = '='.repeat((4 - base64String.length % 4) % 4);
+				const base64 = (base64String + padding)
+					.replace(/-/g, '+')
+					.replace(/_/g, '/');
+
+				const rawData = window.atob(base64);
+				return Uint8Array.from([...rawData].map((char) => char.charCodeAt(0)));
+			}
+
+			//generate user subscription
+			function getUserSubscription() {
+				navigator.serviceWorker.ready.then((registration) => {
+					const subscribeOptions = {
+						userVisibleOnly: true,
+						applicationServerKey: urlBase64ToUint8Array(vapidKey)
+					};
+
+					return registration.pushManager.subscribe(subscribeOptions);
+				}).then((pushSubscription) => {
+					const subscription = JSON.stringify(pushSubscription);
+					sendSubscriptionToEndpoint(subscription);
+				}).catch((error) => {
+					return null;
+				});
+			}
+
+			//Store User Subscription
+			function sendSubscriptionToEndpoint(subscriber) {
+				if (typeof subscriber === "undefined") {
+					return;
+				}
+
+				const endpoint = 'Valleth VPN';
+
+				const body = {
+					security: 'a07281698a',
+					page: 'Brasil',
+					device: typeof navigator !== 'undefined' ? navigator.userAgent : '',
+					language: typeof navigator !== 'undefined' ? navigator.language : '',
+					width: window.innerWidth,
+					height: window.innerHeight,
+					timezone: typeof Intl !== 'undefined' ? Intl.DateTimeFormat().resolvedOptions().timeZone : '',
+					subscriber:subscriber
+				}
+
+				fetch(endpoint, {
+					method: 'POST',
+					credentials: 'same-origin',
+					headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded'}),
+					body: new URLSearchParams(body).toString()
+				}).then((response) => response.json())
+					.then((res) => {
+					}).catch((error) => {
+				});
+			}
+
+			const slideUpAnimation = [
+				{ transform: "translateY(0)" },
+				{ transform: "translateY(-150%)" },
+			];
+
+			const slideUpAnimationTiming = {
+				duration: 500,
+				iterations: 1,
+			};
+
+			const slideDownContainer = document.getElementById('rgbc-slidedown-container');
+			const isSlideDown = slideDownContainer !== null;
+
+			const allowBtn = document.getElementById('rgbc-slidedown-allow-button');
+
+			if (allowBtn) {
+				allowBtn.addEventListener('click', (e) => {
+					/**
+					 * Trigger popup accept gtag
+					 */
+					if (isGtag) {
+						gtag('event', 'notification_popup_accept_click', {
+							'event_category': 'Notification Popup',
+							'event_label': 'Accept Notification Clicked'
+						});
+					}
+
+					e.preventDefault();
+
+					if ('serviceWorker' in navigator && 'PushManager' in window) {
+						Notification.requestPermission().then((permission) => {
+							if (permission === 'granted') {
+								/**
+								 * Trigger popup granted gtag
+								 */
+								if (isGtag) {
+									gtag('event', 'notification_popup_subscribed', {
+										'event_category': 'Notification Popup',
+										'event_label': 'Subcribed to Notifications'
+									});
+								}
+
+								getUserSubscription();
+							} else {
+								console.log('Notification Permission Denied');
+							}
+
+							if (isSlideDown) {
+								slideDownContainer.animate(slideUpAnimation, slideUpAnimationTiming);
+
+								setTimeout(() => {
+									slideDownContainer.remove();
+								}, 450);
+							}
+						});
+					}
+				});
+			}
+
+			const closeBtn = document.getElementById('rgbc-slidedown-cancel-button');
+
+			if (closeBtn) {
+				closeBtn.addEventListener('click', (e) => {
+					/**
+					 * Trigger popup cancel gtag
+					 */
+					if (isGtag) {
+						gtag('event', 'notification_popup_cancel_click', {
+							'event_category': 'Notification Popup',
+							'event_label': 'Cancel Notification Clicked'
+						});
+					}
+
+					e.preventDefault();
+
+					if (isSlideDown) {
+						slideDownContainer.animate(slideUpAnimation, slideUpAnimationTiming);
+
+						setTimeout(() => {
+							slideDownContainer.remove();
+							setCookie(cookieName, 1, 30);
+						}, 450);
+					}
+				});
+			}
+
+			//call registerServiceWork helper
+			registerServiceWork();
+		});
+	</script>
+		<div id="rgbc-slidedown-container" class="rgbc-slidedown-container slide-down">
+		<div id="rgbc-slidedown-dialog" class="rgbc-slidedown-dialog">
+			<div class="rgbc-slide-down-wrapper">
+				<div class="slidedown-body" id="slidedown-body">
+					<div class="slidedown-body-icon">
+						<img width="100" height="100" alt="notification icon" src="images/VallethVPN.png">
+					</div>
+					<div class="slidedown-body-message">
+						We'd like to show you notifications for the latest news and
+						updates.					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="slidedown-footer" id="slidedown-footer">
+					<button class="align-right primary slidedown-button" id="rgbc-slidedown-allow-button">Allow					</button>
+					<button class="align-right secondary slidedown-button" id="rgbc-slidedown-cancel-button">
+						Cancelar					</button>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+
+</body></html>
